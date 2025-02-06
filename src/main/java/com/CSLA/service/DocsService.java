@@ -11,4 +11,5 @@ public interface DocsService {
     UploadDocs saveUploadDocs(UploadDocs uploadDocs, MultipartFile docsFileFile) throws IOException;
     UploadDocs getUploadDocsById(int id);
     List<UploadDocs> getUploadDocsAll();
+    byte[] generatePdfById(int id); // New method to generate PDF
 }
