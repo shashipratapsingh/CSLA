@@ -35,7 +35,7 @@ public class AdminController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ROLE_Admin', 'ROLE_Manager', 'ROLE_User')")
+    @PreAuthorize("hasAnyAuthority('ROLE_Admin', 'ROLE_Manager')")
     public ResponseEntity<UploadDocs> getUploadDocsById(@PathVariable("id") int id) {
         UploadDocs candidateDetails = docsService.getUploadDocsById(id);
         if (candidateDetails != null) {
@@ -46,7 +46,7 @@ public class AdminController {
     }
 
     @GetMapping("/")
-    @PreAuthorize("hasAnyAuthority('ROLE_Admin', 'ROLE_Manager', 'ROLE_User')")
+    @PreAuthorize("hasAnyAuthority('ROLE_Admin', 'ROLE_Manager')")
     public ResponseEntity<List<UploadDocs>> getUploadDocsAll() {
         List<UploadDocs> uploadDocsDetails = docsService.getUploadDocsAll();
         if (uploadDocsDetails != null && !uploadDocsDetails.isEmpty()) {

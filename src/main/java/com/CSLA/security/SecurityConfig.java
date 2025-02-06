@@ -34,23 +34,18 @@ public class SecurityConfig {
     private JwtFilter jwtFilter;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity.authorizeHttpRequests(auth -> auth.
-                        requestMatchers(
-                                "/",
-                                "/auth/**",
-                                "/error")
-                        .permitAll()
-                        .requestMatchers("/admin/**").hasRole("Admin") // Admin-only APIs
-                        .requestMatchers("/manager/**").hasAnyRole("Admin", "Manager") // Manager & Admin
-                        .requestMatchers("/user/**").hasAnyRole("Admin", "Manager", "User") // All roles
-                        .anyRequest()
-                        .authenticated())
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/", "/auth/**", "/error").permitAll()
+                        .anyRequest().authenticated() // Let method-level security handle the rest
+                )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authenticationProvider(authenticationProvider()).exceptionHandling(e -> e.authenticationEntryPoint(authenticationEntryPoint)).
-                addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class).csrf(AbstractHttpConfigurer::disable).build();
-
-
+                .authenticationProvider(authenticationProvider())
+                .exceptionHandling(e -> e.authenticationEntryPoint(authenticationEntryPoint))
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .csrf(AbstractHttpConfigurer::disable)
+                .build();
     }
 
     @Bean
