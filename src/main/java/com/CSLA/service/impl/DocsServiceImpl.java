@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,5 +49,10 @@ public class DocsServiceImpl implements DocsService {
     public UploadDocs getUploadDocsById(int id) {
         Optional<UploadDocs> uploadDocsOptional = docsRepository.findById(id);
         return uploadDocsOptional.orElse(null); // Return null if not found
+    }
+
+    @Override
+    public List<UploadDocs> getUploadDocsAll() {
+        return docsRepository.findAll(); // No need for Optional here
     }
 }

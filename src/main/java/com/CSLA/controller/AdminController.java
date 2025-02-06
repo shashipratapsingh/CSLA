@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
@@ -34,12 +36,23 @@ public class AdminController {
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('ROLE_Admin', 'ROLE_Manager', 'ROLE_User')")
-    public ResponseEntity<UploadDocs> getCandidateDetailsById(@PathVariable("id") int id) {
+    public ResponseEntity<UploadDocs> getUploadDocsById(@PathVariable("id") int id) {
         UploadDocs candidateDetails = docsService.getUploadDocsById(id);
         if (candidateDetails != null) {
             return ResponseEntity.ok(candidateDetails);
         } else {
             return ResponseEntity.notFound().build(); // Return 404 if candidate not found
+        }
+    }
+
+    @GetMapping("/")
+    @PreAuthorize("hasAnyAuthority('ROLE_Admin', 'ROLE_Manager', 'ROLE_User')")
+    public ResponseEntity<List<UploadDocs>> getUploadDocsAll() {
+        List<UploadDocs> uploadDocsDetails = docsService.getUploadDocsAll();
+        if (uploadDocsDetails != null && !uploadDocsDetails.isEmpty()) {
+            return ResponseEntity.ok(uploadDocsDetails); // Return the list directly
+        } else {
+            return ResponseEntity.notFound().build(); // Return 404 if no documents are found
         }
     }
 
