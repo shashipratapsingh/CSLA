@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e7e64dd6-e661-498b-9c6b-0a03df265aa2" name="Changes" comment="minnor fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CSLA/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CSLA/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CSLA/service/DocsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CSLA/service/DocsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CSLA/service/impl/DocsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CSLA/service/impl/DocsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/CSLA/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/CSLA/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/CSLA/service/DocsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/CSLA/service/DocsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/CSLA/service/impl/DocsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/CSLA/service/impl/DocsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/CSLA/entity/UploadDocs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CSLA/entity/UploadDocs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -16,6 +16,7 @@ public class UploadDocs {
 
     private String docsFilePath;
     private String docsCardFileName;
+    private String status="pending";
 
     @Column(name = "createdBy")
     private Date createdBy;
