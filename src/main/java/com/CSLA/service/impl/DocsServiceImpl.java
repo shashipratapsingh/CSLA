@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 public class DocsServiceImpl implements DocsService {
@@ -43,9 +44,9 @@ public class DocsServiceImpl implements DocsService {
         return docsRepository.save(uploadDocs);
     }
 
-//    @Override
-//    public CandidateDetails getCandidateDetailsById(int id) {
-//        Optional<CandidateDetails> candidateDetailsOptional = candidateDetailsRepository.findById(id);
-//        return candidateDetailsOptional.orElse(null); // Return null if not found
-//    }
+    @Override
+    public UploadDocs getUploadDocsById(int id) {
+        Optional<UploadDocs> uploadDocsOptional = docsRepository.findById(id);
+        return uploadDocsOptional.orElse(null); // Return null if not found
+    }
 }

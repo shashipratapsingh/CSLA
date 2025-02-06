@@ -8,5 +8,5 @@ import java.io.IOException;
 public interface DocsService {
 
     UploadDocs saveUploadDocs(UploadDocs uploadDocs, MultipartFile docsFileFile) throws IOException;
-    //CandidateDetails getCandidateDetailsById(int id);
+    UploadDocs getUploadDocsById(int id);
 }
