@@ -64,7 +64,6 @@ public class AdminController {
     public ResponseEntity<byte[]> generatePdf(@PathVariable("id") int id) {
         try {
             byte[] pdfBytes = docsService.generatePdfById(id);
-
             HttpHeaders headers = new HttpHeaders();
             headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=document_" + id + ".pdf");
             headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF_VALUE);
@@ -72,7 +71,6 @@ public class AdminController {
             headers.add("Pragma", "no-cache");
             headers.add("Expires", "0");
             headers.add("Content-Transfer-Encoding", "binary");
-
             return ResponseEntity.ok()
                     .headers(headers)
                     .contentLength(pdfBytes.length)
@@ -82,5 +80,14 @@ public class AdminController {
         }
     }
 
-
+    @GetMapping("/status/{status}")
+    @PreAuthorize("hasAnyAuthority('ROLE_Admin', 'ROLE_Manager')")
+    public ResponseEntity<List<UploadDocs>> getUploadDocsByStatus(@PathVariable String status) {
+        List<UploadDocs> statusList = docsService.findByStatus(status);
+        if (statusList != null && !statusList.isEmpty()) {
+            return ResponseEntity.ok(statusList); // Return the list directly
+        } else {
+            return ResponseEntity.notFound().build(); // Return 404 if no documents found
+        }
+    }
 }

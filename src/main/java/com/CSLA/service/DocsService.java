@@ -12,4 +12,5 @@ public interface DocsService {
     UploadDocs getUploadDocsById(int id);
     List<UploadDocs> getUploadDocsAll();
     byte[] generatePdfById(int id); // New method to generate PDF
+    List<UploadDocs> findByStatus(String status);
 }

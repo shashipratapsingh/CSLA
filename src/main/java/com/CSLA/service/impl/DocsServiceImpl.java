@@ -105,4 +105,9 @@ public class DocsServiceImpl implements DocsService {
             throw new RuntimeException("Error generating PDF: " + e.getMessage());
         }
     }
+
+    @Override
+    public List<UploadDocs> findByStatus(String status) {
+        return docsRepository.findByStatus(status); // Directly return the list of upload documents
+    }
 }

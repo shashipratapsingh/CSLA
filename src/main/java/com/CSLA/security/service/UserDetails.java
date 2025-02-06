@@ -3,19 +3,18 @@ package com.CSLA.security.service;
 import com.CSLA.entity.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BhavanaCorpUserDetails implements UserDetails {
+public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
     private String userName;
     private String password;
     private List<GrantedAuthority> roles;
 
-    public BhavanaCorpUserDetails(Users users){
+    public UserDetails(Users users){
         this.userName = users.getEmail();
         this.password = users.getPassword();
         this.roles = Arrays.stream(users.getRoles().name().split(",")).map(role-> new SimpleGrantedAuthority("ROLES_"+role)).collect(Collectors.toList());
@@ -37,21 +36,21 @@ public class BhavanaCorpUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return org.springframework.security.core.userdetails.UserDetails.super.isAccountNonExpired();
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return org.springframework.security.core.userdetails.UserDetails.super.isAccountNonLocked();
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return org.springframework.security.core.userdetails.UserDetails.super.isCredentialsNonExpired();
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return org.springframework.security.core.userdetails.UserDetails.super.isEnabled();
     }
 }
